@@ -27,7 +27,7 @@ for i, strong in enumerate(elements):
 
         questions.append((strong.text.split(" ", 1)[1].strip(), answers))
 
-print(json.dumps(questions, indent=4))
+print("Scraped %d questions and answers." % len(questions))
 
 while True:
     try:
