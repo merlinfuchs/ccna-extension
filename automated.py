@@ -80,7 +80,7 @@ while True:
         for _answers in pot_answers:
             for _answer in _answers:
                 for answer in answers:
-                    is_corred = _answer.strip() == answer.text.strip()
+                    is_corred = _answer.strip() in answer.text.strip() or answer.text.strip() in _answer.strip()
                     try:
                         input = answer.find_element_by_tag_name("input")
 
@@ -98,5 +98,6 @@ while True:
 
         print(pot_answers)
 
-    except (NoSuchElementException, IndexError) as e:
-        pass
+    except Exception as e:
+        if not isinstance(e, NoSuchElementException) and not isinstance(e, IndexError):
+            print(e)
