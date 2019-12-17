@@ -97,7 +97,10 @@ while True:
         print(answered, pot_answers)
         if answered:
             time.sleep(1)
-            driver.find_element_by_id("next").click()
+            try:
+                driver.find_element_by_id("next").click()
+            except Exception as e:
+                print("err", e)
 
     except (NoSuchElementException, IndexError) as e:
-        print("err", e)
+        pass
