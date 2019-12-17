@@ -6,6 +6,7 @@ from selenium.webdriver.support.expected_conditions import presence_of_element_l
 import time
 import traceback
 import json
+import keyboard
 
 
 questions = json.load(open("questions/" + input("Question file (e.g. '2_1'): ") + ".json"))
@@ -66,13 +67,15 @@ while True:
         pass
 
 while True:
-    time.sleep(1)
+    time.sleep(0.5)
+    if not keyboard.is_pressed("p"):
+        continue
+
     try:
         question = driver.find_elements_by_class_name("questionText")[-1]
         print("q ", question.text)
         answers = driver.find_elements_by_class_name("coreContent")[-1].find_elements_by_tag_name("li")
         pot_answers = _search_answers(question.text)
-        answered = False
 
         for _answers in pot_answers:
             for _answer in _answers:
@@ -87,20 +90,13 @@ while True:
                     try:
                         print(_answer, _answer.strip() == answer.text.strip())
                         if is_corred:
-                            answered = True
                             if not input.is_selected():
                                 input.click()
 
                     except:
                         traceback.print_exc()
 
-        print(answered, pot_answers)
-        if answered:
-            time.sleep(1)
-            try:
-                driver.find_element_by_id("next").click()
-            except Exception as e:
-                print("err", e)
+        print(pot_answers)
 
     except (NoSuchElementException, IndexError) as e:
         pass
