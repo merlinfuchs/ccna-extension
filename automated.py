@@ -77,6 +77,7 @@ while True:
         answers = driver.find_elements_by_class_name("coreContent")[-1].find_elements_by_tag_name("li")
         pot_answers = _search_answers(question.text)
 
+        answered = False
         for _answers in pot_answers:
             for _answer in _answers:
                 for answer in answers:
@@ -90,11 +91,19 @@ while True:
                     try:
                         print(_answer, _answer.strip() == answer.text.strip())
                         if is_corred:
+                            answered = True
                             if not input.is_selected():
                                 input.click()
 
                     except:
                         traceback.print_exc()
+
+        if answered and keyboard.is_pressed("l"):
+            try:
+                driver.find_element_by_class_name("next").click()
+
+            except:
+                traceback.print_exc()
 
         print(pot_answers)
 
