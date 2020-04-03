@@ -1,5 +1,0 @@
-pyperclip
-requests
-bs4
-selenium
-keyboard
