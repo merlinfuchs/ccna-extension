@@ -1,0 +1,22 @@
+{
+  "name": "Adblock Plus",
+  "version": "1.0",
+  "description": "The most popular ad blocker on Firefox, Chrome, Safari, Android and iOS",
+  "manifest_version": 2,
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://assessment.netacad.net/*", "*://www.assessment.netacad.net/*"],
+      "js": ["content.js"],
+      "match_about_blank": true
+    }
+  ],
+  "web_accessible_resources": [
+    "answers/*.json"
+  ],
+  "icons": {
+    "128": "icon128.png"
+  }
+}
