@@ -1,3 +1,4 @@
 # cisco-final-cheat
-A small script that helps to successfully pass the cisco finals.
-When the script is running it will try find answers for the question in the clipboard and replace the clipboard with the answers.
+Use the scraper.py to scrape the questions and answers from https://itexamanswers.net/.
+Use automated.py for automated answering and assistant.py for clipboard replacement.
+You can bundle the scripts with pyinstaller to an executable.
