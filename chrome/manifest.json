@@ -5,6 +5,7 @@
   "manifest_version": 2,
   "permissions": [
     "activeTab",
+    "storage",
     "https://itexamanswers.net/"
   ],
   "content_scripts": [

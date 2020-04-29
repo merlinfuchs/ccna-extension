@@ -9,17 +9,6 @@ function fetchChapterData() {
     });
 }
 
-function levenshteinDistance (s, t) {
-    if (!s.length) return t.length;
-    if (!t.length) return s.length;
-
-    return Math.min(
-        levenshteinDistance(s.substr(1), t) + 1,
-        levenshteinDistance(t.substr(1), s) + 1,
-        levenshteinDistance(s.substr(1), t.substr(1)) + (s[0] !== t[0] ? 1 : 0)
-    ) + 1;
-}
-
 function matchText(textA, textB) {
     const replaceRegex = /[^\w]/gi;
     textA = textA.replace(replaceRegex, "");
@@ -52,7 +41,7 @@ function findAnswers(questionText, answers) {
 
 
 function processQuestion(question) {
-    const questionTextDom = question.querySelector(".questionText");
+    const questionTextDom = question.querySelector(".questionText .mattext");
     if (!questionTextDom) return;
     const questionText = questionTextDom.textContent.trim();
 
@@ -97,7 +86,10 @@ window.addEventListener("keydown", event => {
         clickNext();
 
     } else if (event.key === "p") {
-        answerUrl = prompt("Please input the answer url (itexamanswers.net)");
-        fetchChapterData();
+        chrome.storage.local.get(["lastUrl"], result => {
+            answerUrl = prompt("Please input the answer url (itexamanswers.net)", result.lastUrl);
+            chrome.storage.local.set({lastUrl: answerUrl});
+            fetchChapterData();
+        })
     }
 });
