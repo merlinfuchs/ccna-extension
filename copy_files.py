@@ -2,7 +2,7 @@ import os
 import shutil
 
 
-sources = ["icon128.png", "answers"]
+sources = ["icon128.png"]
 destinations = ["chrome"]
 
 for source in sources:
