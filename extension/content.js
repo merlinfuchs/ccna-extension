@@ -1,9 +1,11 @@
 let answerUrl;
 let chapterData;
 
+const isFirefox = typeof InstallTrigger !== 'undefined';
+
 function fetchChapterData() {
     // Chapter answers are fetched by the background script because CORS sucks
-    chrome.runtime.sendMessage({type: "load", url: answerUrl}, function (data) {
+    chrome.runtime.sendMessage({type: "load", url: answerUrl}, data => {
         console.table(data);
         chapterData = data;
     });
@@ -72,7 +74,6 @@ function processQuestion(question) {
 function clickNext() {
     document.getElementById("next").click();
 }
-
 
 window.addEventListener("keydown", event => {
     if (event.key === "a") {

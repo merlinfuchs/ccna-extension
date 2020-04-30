@@ -20,10 +20,10 @@ chrome.runtime.onMessage.addListener((data, sender, onSuccess) => {
                     if (innerDom === null) continue;
 
                     const textContent = innerDom.textContent.trim();
-                    const match = /^[0-9]+\. (?<question>.*)$/.exec(textContent);
-                    if (match !== null) {
+                    const matches = textContent.match(/^[0-9]+\. (.*)$/);
+                    if (matches !== null) {
                         // most likely a question
-                        const questionText = match.groups.question;
+                        const questionText = matches[1];
                         const nextChild = answersDom.children[index + 1];
                         if (nextChild === null) continue;
 
