@@ -1,8 +1,6 @@
 let answerUrl;
 let chapterData;
 
-const isFirefox = typeof InstallTrigger !== 'undefined';
-
 function fetchChapterData() {
     // Chapter answers are fetched by the background script because CORS sucks
     chrome.runtime.sendMessage({type: "load", url: answerUrl}, data => {
