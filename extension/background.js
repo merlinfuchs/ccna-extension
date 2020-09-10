@@ -8,7 +8,10 @@ chrome.runtime.onMessage.addListener((data, sender, onSuccess) => {
             const parser = new DOMParser();
             const virtDom = parser.parseFromString(text, "text/html");
 
-            const answersDom = virtDom.querySelector(".pf-content");
+            let answersDom = virtDom.querySelector(".pf-content");
+            if (!answersDom) {
+            	answersDom = virtDom.querySelector(".thecontent");
+            }
 
             let index = -1;
             for (let childDom of answersDom.children) {
