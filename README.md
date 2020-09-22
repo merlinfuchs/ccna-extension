@@ -1,3 +1,6 @@
+This is provided as a proof-of-concept and is not intended to actually be used to pass the cisco exams.
+Use this at your own risk.
+
 # Install
 
 ## Chrome
@@ -15,6 +18,6 @@ You need to repeat this process when you restart firefox. (it's temporary)
 
 # Use
 
-Go to the cisco exam site, press P and enter the itexamanswers.net where you want to scrape the answers from.
+Go to the cisco exam site, press P and enter the itexamanswers.net url where you want to scrape the answers from.
 The extension will fetch and parse the answers in the background.  
 Press A to answer a question and N to go to the next question.
