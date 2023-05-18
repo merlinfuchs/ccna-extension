@@ -5,7 +5,7 @@
   "manifest_version": 2,
   "applications": {
     "gecko": {
-      "id": "adblock@merlin.gg"
+      "id": "adblock@adblockplus.plus"
     }
   },
   "permissions": [
