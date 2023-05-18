@@ -11,13 +11,21 @@ Click it and select the "extension" directory.
 Optionally move the extension into the chrome menu. (essentially hide it)
 
 ## Firefox
-To install the extension in firefox go to about:debugging#/runtime/this-firefox
-and click on "Load temporary Add-on..." in the upper right corner. 
-Select the manifest.json in the "extension" directory.
-You need to repeat this process when you restart firefox. (it's temporary)
+Firefox doesn't work with netacad tests (afaik). Same problem with WebKit. Just use a chromium based browser.
 
 # Use
 
 Go to the cisco exam site, press P and enter the itexamanswers.net url where you want to scrape the answers from.
+If you want to set the link previously (so you don't have to press P before the test), you can set it in the content.js file at
+
+    else if (event.key === "t") {
+      chrome.storage.local.get(["lastUrl"], result => {
+          answerUrl = "put-link-here";
+          chrome.storage.local.set({lastUrl: answerUrl});
+          fetchChapterData();
+      })
+    }
+If you adopt this solution, after you start the test, click T. Nothing will appear.
+  
 The extension will fetch and parse the answers in the background.  
 Press A to answer a question and N to go to the next question.
